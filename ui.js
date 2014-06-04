@@ -191,7 +191,7 @@ function UI(tape_catalog, runner, memory, autoexec) {
             "Run by 'G" + file.entry.toString(16) + "'");
     } else {
       console.log("Started", file.name, "from", file.entry.toString(16));
-      screen.init_cache();
+      tv.init_cache();
       this.runner.cpu.jump(file.entry);
     }
   }
