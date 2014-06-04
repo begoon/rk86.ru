@@ -122,7 +122,7 @@ function Memory(keyboard) {
 
     if (peripheral_reg == 0xc000 && this.vg75_c001_80_cmd == 2) {
       this.cursor_y_buf = byte + 1;
-      screen.set_cursor(this.cursor_x_buf - 1, this.cursor_y_buf - 1);
+      tv.set_cursor(this.cursor_x_buf - 1, this.cursor_y_buf - 1);
       this.video_screen_cursor_x = this.cursor_x_buf;
       this.video_screen_cursor_y = this.cursor_y_buf;
       this.vg75_c001_80_cmd = 0;
@@ -190,10 +190,8 @@ function Memory(keyboard) {
         this.video_memory_base = this.video_memory_base_buf;
         this.video_memory_size = this.video_memory_size_buf;
         // Re-configure video.
-        if (!(typeof screen === 'undefined')) {
-          screen.set_geometry(this.video_screen_size_x, this.video_screen_size_y,
-                              this.video_memory_base);
-        }
+        tv.set_geometry(this.video_screen_size_x, this.video_screen_size_y,
+                        this.video_memory_base);
       }
 
       this.tape_8002_as_output = 0;
