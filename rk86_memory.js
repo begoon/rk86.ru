@@ -190,8 +190,9 @@ function Memory(keyboard) {
         this.video_memory_base = this.video_memory_base_buf;
         this.video_memory_size = this.video_memory_size_buf;
         // Re-configure video.
-        screen.set_geometry(this.video_screen_size_x, this.video_screen_size_y,
-                            this.video_memory_base);
+        if (screen)
+          screen.set_geometry(this.video_screen_size_x, this.video_screen_size_y,
+                              this.video_memory_base);
       }
 
       this.tape_8002_as_output = 0;
