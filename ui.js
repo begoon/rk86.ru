@@ -52,7 +52,7 @@ function UI(tape_catalog, runner, memory, autoexec) {
     var height = document.getElementById('screen_height').value;
     var scale_x = document.getElementById('scale_x').value;
     var scale_y = document.getElementById('scale_y').value;
-    screen.set_view(width, height, scale_x, scale_y);
+    tv.set_view(width, height, scale_x, scale_y);
   }
 
   this.resize_canvas = function(width, height) {
