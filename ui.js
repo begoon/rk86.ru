@@ -52,7 +52,7 @@ function UI(tape_catalog, runner, memory, autoexec) {
     var height = document.getElementById('screen_height').value;
     var scale_x = document.getElementById('scale_x').value;
     var scale_y = document.getElementById('scale_y').value;
-    tv.set_view(width, height, scale_x, scale_y);
+    screen.set_view(width, height, scale_x, scale_y);
   }
 
   this.resize_canvas = function(width, height) {
@@ -191,7 +191,7 @@ function UI(tape_catalog, runner, memory, autoexec) {
             "Run by 'G" + file.entry.toString(16) + "'");
     } else {
       console.log("Started", file.name, "from", file.entry.toString(16));
-      tv.init_cache();
+      screen.init_cache();
       this.runner.cpu.jump(file.entry);
     }
   }
@@ -206,6 +206,13 @@ function UI(tape_catalog, runner, memory, autoexec) {
     document.getElementById("emulator_button").disabled = name == "emulator";
     document.getElementById("assembler_button").disabled = name == "assembler";
     document.getElementById("keyboard_button").disabled = name == "keyboard";
+
+    if (name == "assembler" || name == "keyboard") {
+      var frame_name = name + "_frame";
+      var panel_name = name + "_panel";
+      document.getElementById(frame_name).style.width = document.getElementById(panel_name).offsetWidth;
+      document.getElementById(frame_name).style.height = document.getElementById(panel_name).offsetHeight;
+    }
   }
 
   this.toggle_panel = function(name) {

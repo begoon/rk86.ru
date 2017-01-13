@@ -17,7 +17,7 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 // These two variables have to be global
-var ui, tv;
+var ui, screen;
 
 function IO() {
   this.input = function(port) { return 0; }
@@ -40,7 +40,7 @@ function main() {
   var runner = new Runner(cpu);
 
   ui = new UI(tape_catalog(), runner, memory, new Autoexec());
-  tv = new Screen(rk86_font_image(), ui, memory);
+  screen = new Screen(rk86_font_image(), ui, memory);
 
   document.getElementById("loading").style.display = "none";
   document.getElementById("main_panel").style.display = "block";
